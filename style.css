@@ -16,6 +16,17 @@
 	z-index: 9;
 } 
 
+#musicIcon {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 500px;
+	height: 500px;
+	z-index: 5;
+	opacity: 0.5;
+}
+
 label {
 	position: fixed;
 	top: 10px;

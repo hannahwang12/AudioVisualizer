@@ -3,6 +3,8 @@ window.onload = function() {
 
 	var music = document.getElementById("music");
 	var audio = document.getElementById("audio");
+	
+
 
 	var canvasBackground = document.getElementById("canvasBackground");
 	var bContext = canvasBackground.getContext("2d");
@@ -50,8 +52,12 @@ window.onload = function() {
 	music.onchange = function() {
 		var files = this.files;
 		audio.src = URL.createObjectURL(files[0]);
+		audio.loop = true;
 		audio.load();
 		audio.play();
+		
+
+
 		var context = new AudioContext();
 		var src = context.createMediaElementSource(audio);
 		var analyzer = context.createAnalyser();
@@ -90,7 +96,7 @@ window.onload = function() {
   
 					cContext.lineTo(x, canvasHeight - (2.5 * barHeight + 50));
 
-			        x += barWidth;
+			        x += 1.2 * barWidth;
 			    }
 
 			    cContext.strokeStyle = "#eeeeee";
@@ -105,16 +111,16 @@ window.onload = function() {
 			        barHeight = (dataArray[i]);
 
 
-			        var r = (barHeight + (25 * (i/bufferLength)));
+			        var r = 0.8 * barHeight + 25 * (i/bufferLength);
 			        var g = 300 * (i/bufferLength);
 			        var b = 100	;
 
 			        cContext.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-			        cContext.fillRect(x - 15, canvasHeight - 2.5 * barHeight, 2 * barWidth, 2.5 * barHeight);
+			        cContext.fillRect(x - 23.2, canvasHeight - 2.5 * barHeight, 2 * barWidth, 2.5 * barHeight);
 			        cContext.shadowColor = "#000000";
 					cContext.shadowBlur = 0;
 
-			        x += 2 * barWidth + 3;
+			        x += 2 * barWidth + 3.3;
 		    	}
 		    	
 			} else if (dots) {
@@ -123,11 +129,11 @@ window.onload = function() {
 			        barHeight = (dataArray[i]);
 
 			        cContext.fillStyle = "white";
-			        cContext.fillRect(x - 25, canvasHeight - 3 * barHeight, 0.8 * barWidth, 3);
+			        cContext.fillRect(x - 25, canvasHeight - 3 * barHeight, barWidth, 3);
 			        cContext.shadowColor = "#eeeeee";
 					cContext.shadowBlur = 2;
 
-			        x += 0.8 * barWidth + 2.2;
+			        x += barWidth + 2.2;
 			    }
 
 			}
